@@ -1,0 +1,31 @@
+<div class="row">
+    <div class="col-xs-12 col-md-6 hv-container">
+        <ul class="nav nav-tabs">
+            <li><a ng-click="model.toNotification()">Notifications</a></li>
+            <li><a ng-click="model.toFollowing()">Following ({{model.following.length}})</a></li>
+            <li><a ng-click="model.toFollower()">Followers ({{model.followers.length}})</a></li>
+            <li><a ng-click="model.toBookmark()">Bookmarks ({{model.bookmark.length}})</a></li>
+            <li class="active"><a ng-click="model.toReview()">Reviews ({{model.review.length}})</a></li>
+        </ul>
+        <h4>Reviews:</h4>
+
+        <ul class="list-group">
+            <li class="list-group-item" ng-repeat="r in model.review">
+                <a ng-click="model.deleteReview(r._id)" class="pull-right">Delete</a>
+                <a href="#!/venue/{{r._venue}}">{{r.venueName}}</a><br>
+                <ng-rating ng-model="r.rating" editable="false"></ng-rating><br>
+                <b>{{r.title}}:</b><br>
+                {{r.text}}<br>
+                <small>{{r.dateCreated | date}}</small>
+
+            </li>
+            <li class="list-group-item" ng-show="!model.review.length">
+                You do not have any reviews :(
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+
+

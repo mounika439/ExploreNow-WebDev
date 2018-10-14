@@ -1,0 +1,76 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">ExploreNow</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="#"><span class="fa fa-search"></span> Search</a></li>
+                <li><a href="#!/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                <li class="active"><a href="#!/register"><span class="glyphicon glyphicon-edit"></span> Register</a></li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</nav>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-12 col-md-4 col-md-offset-4 hv-container">
+            <h1>Register</h1>
+            <div ng-show="model.error" class="alert alert-danger">{{model.error}}</div>
+            <div ng-show="model.errorMessage" class="alert alert-danger">{{model.errorMessage}}</div>
+            <form action=""
+                  method="post">
+                <div class="form-group">
+                    <input type="text"
+                           ng-model="model.user.username"
+                           name="username"
+                           id="username"
+                           placeholder="Username"
+                           class="form-control">
+                </div>
+                <div class="form-group">
+                    <input type="text"
+                           ng-model="model.user.firstName"
+                           name="firstName"
+                           id="firstName"
+                           placeholder="First name"
+                           class="form-control">
+                </div>
+                <div class="form-group">
+                    <input type="text"
+                           ng-model="model.user.lastName"
+                           name="lastName"
+                           id="lastName"
+                           placeholder="Last name"
+                           class="form-control">
+                </div>
+                <div class="form-group">
+                    <input type="password"
+                           ng-model="model.user.password"
+                           name="password"
+                           id="password"
+                           placeholder="Password"
+                           class="form-control">
+                </div>
+                <div class="form-group">
+                    <input type="password"
+                           name="verifyPassword"
+                           ng-model="model.user.verifyPassword"
+                           id="veriyPassword"
+                           placeholder="Verify password"
+                           class="form-control">
+                </div>
+                    <a ng-click="model.register(model.user)"
+                       class="btn btn-primary btn-block">Register</a>
+                    <a href="#!/login"
+                       class="btn btn-danger btn-block">Cancel</a>
+            </form>
+        </div>
+    </div>
+</div>

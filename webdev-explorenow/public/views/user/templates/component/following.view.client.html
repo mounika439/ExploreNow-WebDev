@@ -1,0 +1,28 @@
+<div class="row">
+    <div class="col-xs-12 col-md-6 hv-container">
+        <ul class="nav nav-tabs">
+            <li><a ng-click="model.toNotification()">Notifications</a></li>
+            <li class="active"><a ng-click="model.toFollowing()">Following ({{model.following.length}})</a></li>
+            <li><a ng-click="model.toFollower()">Followers ({{model.followers.length}})</a></li>
+            <li><a ng-click="model.toBookmark()">Bookmarks ({{model.bookmark.length}})</a></li>
+            <li><a ng-click="model.toReview()">Reviews ({{model.review.length}})</a></li>
+        </ul>
+        <h4>Following:</h4>
+
+        <ul class="list-group">
+            <li class="list-group-item" ng-repeat="user in model.following">
+                <a href="#!/user/{{user._id}}">{{user.username}}</a>
+                <a ng-click="model.unfollowUser(user._id)" class="pull-right">Unfollow</a>
+            </li>
+            <li class="list-group-item" ng-show="!model.following.length">
+                You do not follow any user :(
+            </li>
+        </ul>
+        <a href="#!/user/search"
+           class="btn btn-success btn-block">Find users</a>
+    </div>
+</div>
+
+
+
+

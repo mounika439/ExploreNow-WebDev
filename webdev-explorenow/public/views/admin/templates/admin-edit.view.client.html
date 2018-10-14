@@ -1,0 +1,98 @@
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">ExploreNow</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="#"><span class="fa fa-search"></span> Search</a></li>
+                <li class="active"><a href="#!/admin"><span class="fa fa-user"></span> Admin</a></li>
+                <li><a ng-click="model.logout()">Logout</a></li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</nav>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-12 col-md-4 col-md-offset-4 hv-container">
+            <div ng-show="model.successMessage" class="alert alert-success">{{model.successMessage}}</div>
+            <div ng-show="model.error" class="alert alert-danger">{{model.error}}</div>
+            <h2>Edit Profile</h2>
+            <form action="/api/upload"   method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="username">Username:</label>
+                    <input type="text"
+                           name="username"
+                           id="username"
+                           ng-model="model.user.username"
+                           placeholder="username"
+                           class="form-control">
+                </div>
+                <!--<div class="form-group">-->
+                    <!--<label for="password">Password:</label>-->
+                    <!--<input type="text"-->
+                           <!--name="password"-->
+                           <!--id="password"-->
+                           <!--ng-model="model.user.password"-->
+                           <!--placeholder="username"-->
+                           <!--class="form-control">-->
+                <!--</div>-->
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="text"
+                           name="email"
+                           id="email"
+                           ng-model="model.user.email"
+                           placeholder="email"
+                           class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="firstName">First name:</label>
+                    <input type="text"
+                           name="firstName"
+                           id="firstName"
+                           ng-model="model.user.firstName"
+                           placeholder="first name"
+                           class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="lastName">Last name:</label>
+                    <input type="text"
+                           name="lastName"
+                           id="lastName"
+                           ng-model="model.user.lastName"
+                           placeholder="last name"
+                           class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="lastName">Location:</label>
+                    <input type="text"
+                           name="location"
+                           id="location"
+                           ng-model="model.user.location"
+                           placeholder="City, Country"
+                           class="form-control">
+                </div>
+                <div class="form-group">
+                    <input  name="myFile"    type="file" class="form-control"/>
+                    <input  name="userId"    value="{{model.user._id}}"   style="display: none"/>
+                </div>
+                <button type="submit"
+                        class="btn btn-block btn-primary form-control">Upload Image</button>
+                <a role="button" ng-click="model.updateUser(model.user)"
+                   class="btn btn-primary btn-block">Update Profile</a>
+                <br>
+                <a ng-click="model.deleteUser(model.user._id)"
+                   class="btn btn-danger btn-block"
+                   role="button">Delete account</a>
+            </form>
+        </div>
+    </div>
+</div>

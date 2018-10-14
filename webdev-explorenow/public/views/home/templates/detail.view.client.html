@@ -1,0 +1,150 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">ExploreNow</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="#"><span class="fa fa-search"></span> Search</a></li>
+                <li ng-show="model.user" ><a href="#!/user"><span class="fa fa-user"></span> {{model.user.username}}</a></li>
+                <li ng-show="!model.user"><a href="#!/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                <li class="active" ng-show="model.isManager"><a href="#!/venue/{{model.user._venue}}">Venue page</a></li>
+                <li ng-show="model.user"><a ng-click="model.logout()"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</nav>
+<div class="container-fluid">
+    <div class="row">
+
+        <div class="col-xs-12 col-md-2 col-md-offset-2 hv-container hv-margin">
+            <img class="img-responsive img-thumbnail" src="{{model.imageUrl}}">
+            <h4>{{model.venue.name}}</h4>
+            <p ng-show="model.venue.rating" class="btn" style="background-color: #{{model.venue.ratingColor}}">{{model.venue.rating}}</p>
+            <h5 ng-show="model.venue.location">Location:</h5>
+            <div ng-repeat="line in model.venue.location">{{line}}</div>
+            <h5 ng-show="model.venue.hours.status">Timings:</h5>
+            {{model.venue.hours.status}}
+            <h5 ng-show="model.venue.contact">Contact:</h5>
+            {{model.venue.contact}}
+            <h5 ng-show="model.venue.price">Price:</h5>
+            {{model.venue.price}}
+            <h5 ng-show="model.venue.url">Website:</h5>
+            <a ng-show="model.venue.url" href="{{model.venue.url}}">Click here!</a>
+
+
+            <a ng-show="model.isManager" href="#!/venue/{{model.user._venue}}/manage" target="_blank" class="btn-default btn-block btn">Manage page</a>
+            <div ng-show="model.loggedin">
+                <div ng-show="!model.user._venue">
+                    <hr>
+                    <a ng-show="!model.bookmarked" ng-click="model.bookmarkVenue()"
+                       class="btn btn-primary btn-block">Bookmark</a>
+                    <a ng-show="model.bookmarked" ng-click="model.unbookmarkVenue()"
+                       class="btn btn-danger btn-block">Remove bookmark</a>
+                    <a ng-show="!model.ExploreNow" ng-click="model.checkIn()"
+                       class="btn btn-primary btn-block">CheckIn</a>
+                    <p ng-show="model.ExploreNow"><i>ExploreNow here!</i></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-6">
+            <div class="row">
+                <div class="col-xs-12 hv-container-map" style="">
+                    <img src="{{model.mapUrl}}" class="img-responsive" style="display: inline">
+                </div>
+            </div>
+            <div class="row hv-spacing"></div>
+            <div class="row">
+                <div ng-show="model.venue.offerText" class="col-xs-12 hv-container">
+                    <h2>Today's offer:</h2>
+                    <b>{{model.venue.offerTitle}}</b><br>
+                    {{model.venue.offerText}}
+                </div>
+            </div>
+            <div class="row hv-spacing" ng-show="model.venue.offerText"></div>
+            <div class="row">
+                <div ng-show="model.loggedin" class="col-xs-12 hv-container">
+                    <div ng-show="!model.userReview">
+                        <label for="title">Write a Review:</label><br>
+                        <div ng-show="model.errorMessage" class="alert alert-danger">
+                            {{model.errorMessage}}
+                        </div>
+                        <ng-rating ng-model="model.newReview.rating" editable="true"></ng-rating>
+                        <div class="form-group">
+                            <input type="text"
+                                   name="title"
+                                   id="title"
+                                   ng-model="model.newReview.title"
+                                   placeholder="Title"
+                                   class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <textarea name="text"
+                                      ng-model="model.newReview.text"
+                                      class="form-control"
+                                      placeholder="Say something about this place"
+                                      rows="5">{{model.newReview.text}}</textarea>
+                        </div>
+                        <a role="button" ng-click="model.createReview(model.newReview)"
+                           class="btn btn-primary btn-block">Post</a>
+                    </div>
+                    <div ng-show="model.userReview">
+                        <label for="review">Your Review:</label><br>
+                        <ng-rating ng-model="model.userReview.rating" editable="true"></ng-rating>
+                        <div class="form-group">
+                            <input type="text"
+                                   name="title"
+                                   id="review"
+                                   ng-model="model.userReview.title"
+                                   placeholder="Title"
+                                   class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <textarea name="text"
+                                      ng-model="model.userReview.text"
+                                      class="form-control"
+                                      placeholder="Say something about this place"
+                                      rows="5">{{model.userReview.text}}</textarea>
+                        </div>
+                        <a role="button" ng-click="model.updateReview(model.userReview)"
+                           class="btn btn-primary btn-block">Update</a>
+                        <a role="button" ng-click="model.deleteReview(model.userReview._id)"
+                           class="btn btn-danger btn-block">Delete</a>
+                    </div>
+                </div>
+            </div>
+            <div class="row hv-spacing" ng-show="model.loggedin"></div>
+            <div class="row">
+                <ul class="col-xs-12 hv-container">
+                    <h4>Reviews:</h4>
+                    <ul class="list-group">
+                        <li class="list-group-item" ng-repeat="review in model.reviews">
+                            <ng-rating ng-model="review.rating" editable="false"></ng-rating><br>
+                            <h5>{{review.title}}:</h5>
+                            <small>By <a href="#!/user/{{review._user._id}}">{{review._user.username}}</a> on {{review.dateCreated | date}}</small><br>
+                            {{review.text}}<br>
+
+                            <ul class="list-group" ng-show="review.reply">
+                            <li class="list-group-item">
+                                <b>{{model.venue.name}} says:</b><br>
+                                {{review.reply}}
+                            </li>
+                            </ul>
+                        </li>
+                        <li class="list-group-item" ng-show="!model.reviews.length">
+                            There are no reviews for this venue, be the first one to leave a review!
+                        </li>
+                    </ul>
+                    <div ng-show="!model.venue._manager"><small>Do you work at <b>{{model.venue.name}}</b>?
+                        Register <a href="#!/register/{{model.vid}}">here</a> as a manager to manage this page and post offers!</small></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

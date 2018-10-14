@@ -1,0 +1,55 @@
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">ExploreNow</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="#"><span class="fa fa-search"></span> Search</a></li>
+                <li ng-show="model.currentUser" ><a href="#!/user"><span class="fa fa-user"></span> {{model.currentUser.username}}</a></li>
+                <li ng-show="!model.currentUser"><a href="#!/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                <li ng-show="!model.currentUser"><a href="#!/register"><span class="glyphicon glyphicon-edit"></span> Register</a></li>
+                <li ng-show="model.currentUser"><a ng-click="model.logout()"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-12 col-md-2 col-md-offset-2 hv-container hv-margin">
+            <div class="img-thumbnail"><img class="img-responsive" src="{{model.user.pictureUrl}}"></div>
+            <h4>{{model.user.firstName}} {{model.user.lastName}}</h4>
+            <h5>@{{model.user.username}}</h5>
+            {{model.user.location}}<br>
+            Status: <i>{{model.user.status}}</i>
+            <hr>
+            <div ng-switch="model.followed">
+                <a ng-switch-when="false" role="button" ng-click="model.followUser()"
+                   class="btn btn-success btn-block">Follow User</a>
+                <a ng-switch-when="true" role="button" ng-click="model.unfollowUser()"
+                   class="btn btn-danger btn-block">Unfollow User</a>
+            </div>
+            <br>
+        </div>
+
+        <div ng-switch="model.currentTab">
+            <div ng-switch-when="FOLLOWING">
+                <ng-include src="'views/profile/templates/component/following.view.client.html'">
+            </div>
+            <div ng-switch-when="FOLLOWERS">
+                <ng-include src="'views/profile/templates/component/followers.view.client.html'">
+            </div>
+            <div ng-switch-when="REVIEW">
+                <ng-include src="'views/profile/templates/component/review.view.client.html'">
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,102 @@
+
+a:hover{
+    text-decoration: none;
+}
+
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
+    background-color: transparent;
+    color: white;
+}
+
+.hv-header{
+    background: url("../vendor/img/header.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.nav.navbar-default{
+    margin: auto;
+}
+
+.hv-bgimg {
+    position: fixed;
+    left:0;
+    right: 0;
+    top:0;
+    bottom: 0;
+    background-size: cover;
+    background-image: url('../uploads/bg.png');
+}
+
+input{
+    margin-bottom: 5px;
+}
+
+body{
+    padding-top: 80px;
+    padding-bottom: 15px;
+    background-color: #2C5A71;
+}
+
+.hv-glyphicon{
+    margin-right: 10px;
+}
+
+.hv-text-center{
+    text-align: center;
+}
+
+.hv-spacing{
+    height: 15px;
+}
+
+.hv-container{
+    background-color: #d3ecff;
+    padding: 25px;
+}
+
+.hv-container-map{
+    background-color: white;
+    padding: 5px;
+    margin: auto;
+    text-align: center
+}
+
+.hv-margin{
+    margin-right: 15px;
+    margin-bottom: 15px;
+}
+
+.hv-widget{
+    position: relative;
+}
+
+.hv-floating-icons{
+    position: absolute;
+    background-color: white;
+    z-index: +2;
+    right: 0px;
+    border-radius: 5px;
+    padding: 3px;
+}
+
+
+.hv-avatar-container{
+    background-color:  rgba(0, 0, 0, 0.7);
+    text-align: center;
+    color: white;
+    margin-top: 6%;
+    margin-left: 35%;
+    margin-right: 35%;
+    border-radius: 25px;
+    padding: 3%;
+}
+
+.hv-avatar{
+    height: 16.67vw;
+    width: 16.67vw;
+    margin: auto;
+}

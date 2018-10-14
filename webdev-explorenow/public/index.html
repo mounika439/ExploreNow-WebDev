@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="ExploreNow" class="ng-scope">
+<head>
+    <meta charset="UTF-8">
+    <title>{{title}}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          rel="stylesheet"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular-route.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+    <script type="text/javascript" src="config.js"></script>
+    <script type="text/javascript" src="views/home/controllers/home.controller.client.js"></script>
+    <script type="text/javascript" src="views/profile/controller/login.controller.client.js"></script>
+    <script type="text/javascript" src="views/user/controllers/user.controller.client.js"></script>
+    <script type="text/javascript" src="views/user/controllers/user-edit.controller.client.js"></script>
+    <script type="text/javascript" src="views/user/controllers/user-list.controller.client.js"></script>
+    <script type="text/javascript" src="views/profile/controller/profile.controller.client.js"></script>
+    <script type="text/javascript" src="views/profile/controller/register.controller.client.js"></script>
+    <script type="text/javascript" src="views/manager/controllers/register-manager.controller.client.js"></script>
+    <script type="text/javascript" src="views/manager/controllers/detail-manager.controller.client.js"></script>
+    <script type="text/javascript" src="views/home/controllers/search.controller.client.js"></script>
+    <script type="text/javascript" src="views/home/controllers/detail.controller.client.js"></script>
+    <script type="text/javascript" src="views/admin/controllers/admin-home.controller.client.js"></script>
+    <script type="text/javascript" src="views/admin/controllers/admin-create.controller.client.js"></script>
+    <script type="text/javascript" src="views/admin/controllers/admin-edit.controller.client.js"></script>
+    <script type="text/javascript" src="vendor/css/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="services/user.service.client.js"></script>
+    <script type="text/javascript" src="services/venue.service.client.js"></script>
+    <script type="text/javascript" src="services/review.service.client.js"></script>
+    <script type="text/javascript" src="services/notification.service.client.js"></script>
+    <script type="text/javascript" src="vendor/angular/ngRating/ng-rating.js"></script>
+    <link href="css/theme.css" rel="stylesheet">
+    <link href="vendor/css/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/bootswatch/latest/paper/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="vendor/angular/ngRating/ng-rating.css">
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="shortcut icon" href="vendor/img/logo.PNG">
+    <link rel="icon" href="vendor/img/logo.PNG">
+</head>
+<body>
+<div ng-view class="ng-scope"></div>
+</body>
+</html>

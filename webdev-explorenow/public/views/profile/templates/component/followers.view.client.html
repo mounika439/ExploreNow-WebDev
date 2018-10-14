@@ -1,0 +1,22 @@
+<div class="row">
+    <div class="col-xs-12 col-md-6 hv-container">
+        <ul class="nav nav-tabs">
+            <li><a ng-click="model.toReview()">Reviews ({{model.review.length}})</a></li>
+            <li><a ng-click="model.toFollowing()">Following ({{model.following.length}})</a></li>
+            <li class="active"><a ng-click="model.toFollowers()">Followers ({{model.followers.length}})</a></li>
+        </ul>
+        <h4>Following:</h4>
+        <ul class="list-group">
+            <li class="list-group-item" ng-repeat="user in model.followers">
+                <a href="#!/user/{{user._id}}">{{user.username}}</a>
+            </li>
+            <li class="list-group-item" ng-show="!model.followers.length">
+                User does not have any followers :(
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+
+
