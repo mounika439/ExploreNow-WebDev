@@ -1,10 +1,8 @@
-/**
- * Created by mounika.
- */
 
 /**
  * Created by mounika.
  */
+
 (function () {
     angular
         .module("ExploreNow")

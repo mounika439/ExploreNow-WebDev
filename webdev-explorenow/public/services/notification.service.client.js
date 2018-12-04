@@ -51,7 +51,6 @@
                 .then(function (response) {
                     return response.data;
                 });
-
         }
 
         function findNotificationsForFollower(userId) {
